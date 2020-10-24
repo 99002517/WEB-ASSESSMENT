@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validate(){
+            var name=document.getElementById('name').value;
+            var password=document.getElementById('password').value;
+            var email=document.getElementById('email').value;
+            var phone=document.getElementById('phone').value;
+
+            var nameList=['nithya','nisarga','rekha','sandy','poorva'];
+            
+            var nameLength=name.length;
+            var passwordLength=password.length;
+            var phoneLength=phone.length;
+            var letters = /^[A-Za-z]+$/;
+
+           var pattern=/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
+
+
+            if(!(name.match(letters)) || nameLength<5 || nameLength>15)
+            {
+                alert("Name cannot be empty or number or less than 3 or greater than 15");
+                document.getElementById('name').focus();
+            }
+            
+            else if(!(password.match(pattern)) || passwordLength<7 || passwordLength>15)
+            {
+                alert("password must contain upper case, lower case, special character, number and length should be between 7-14");
+                document.getElementById('password').focus();
+            }
+            else if(isNaN(phone) || phoneLength!=10 )
+            {
+                alert("Phone number cannot be null or string and should be 10 digits");
+                document.getElementById('phone').focus();
+            }
+         
+            else if(nameList.indexOf(name) == -1 )
+            {
+                document.getElementById("print").innerHTML="Welcome "+name+"<br>"+email+"<br> "+phone;
+            }
+            
+            else
+            {
+                document.getElementById("myform").submit();
+               
+            }
+            
+        }
+           
+            
+    </script>
+     <style type="text/css">
+        body
+       {
+           margin:0px;
+           background-color:#f26724;
+           background-image:url(image/background.jpg);
+           color:#f9fcf5;
+           font-family:Arial, Helvetica, sans-serif;
+       }
+       
+       #main{width:600px; height:auto; overflow:hidden; padding-bottom:20px; margin-left:auto; margin-right:auto; 
+       border-radius:5px; padding-left:10px; margin-top:100px; border-top:3px double #f1f1f1; 
+       border-bottom:3px double #f1f1f1; padding-top:20px;
+       }
+       
+       #main table{font-family:"Comic Sans MS", cursive;}
+       /* css code for textbox */
+       #main .tb{height:28px; width:230px; border:1px solid#f26724; color:black; font-weight:bold; border-left:5px solid #f7f7f7; opacity:0.9;}
+       
+       #main .tb:focus{height:28px; border:1px solid #f26724; outline:none; border-left:5px solid #f7f7f7;}
+   
+       /* css code for button*/
+       #main .btn{width:150px; height:32px; outline:none;  color:#f7f7f7; font-weight:bold; border:0px solid #f26724; 
+       text-shadow: 0px 0.5px 0.5px #fff; border-radius: 2px; font-weight: 600; color: #f26724; letter-spacing: 1px; 
+       font-size:14px; background-color:#f1f1f1; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
+     
+       #main .btn:hover{background-color:#f26724; outline:none;  border-radius: 2px; color:#f1f1f1; border:1px solid #f1f1f1;
+       -webkit-transition: 1s; -moz-transition: 1s; transition: 1s; }
+       </style>
+</head>
+<body>
+    <!-- Main div code -->
+	<div id="main">
+        <div class="h-tag">
+        <h2><center>REGISTRATION FORM</center></h2>
+        </div>
+        <!-- create account div -->
+        <div class="login">
+        <table cellspacing="2" align="center" cellpadding="8" border="0">
+        
+        <tr>
+        <td align="right">Enter Username :</td>
+        <td><input type="text" placeholder="Enter Username " id="name" class="tb" /></td>
+        </tr>
+        <tr>
+        <td align="right">Enter Password :</td>
+        <td><input type="password" placeholder="Enter Password " id="password" class="tb" /></td>
+        </tr>
+        <tr>
+            <td align="right">Enter Email ID :</td>
+            <td><input type="text" placeholder="Enter Email ID " id="email" class="tb" /></td>
+            </tr>
+            <tr>
+                <td align="right">Enter Phone Number :</td>
+                <td><input type="text" placeholder="Enter Phone Number" id="phone" class="tb" /></td>
+                </tr>
+        <tr>
+        <td></td>
+        <td>
+            <p>
+                
+                <h2>Date <input type="date" name=""></h2>
+            
+            </p>
+            <p>
+                Airport Pick up Facility: <input type="radio" name="billloc">Yes <input type="radio" name="billloc">No</p>
+              </p>
+
+            <p>
+                <select id="dropDown" onchange="productDescription()">
+                    <option>--Location--</option>
+                    <option value=1>Mysore</option>
+                    <option value=2>Banglore</option>
+                    <option value=2>Chennai</option>
+                    <option value=2>Badodra</option>
+                    <option value=2>Hydrabad</option>
+
+                    
+                </select>
+                </p>
+        <input type="button" value="register" onclick="validate();" >
+    
+    </form>
+</body>
+<div id="print"></div>
+</html>
